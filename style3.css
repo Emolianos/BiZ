@@ -1,0 +1,187 @@
+:root {
+    --bg-pastel: #fdf5f7;
+    --primary: #ff7ebb;
+    --primary-hover: #ff9ec9;
+    --secondary: #87ceeb;
+    --text-dark: #4a374a;
+    --text-muted: #8c738c;
+    --card-border: #ffd1dc;
+    --card-shadow: 0 6px 0px #ffd1dc;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Fredoka', sans-serif; }
+
+body {
+    background-color: var(--bg-pastel);
+    background-image: radial-gradient(#ffe4e1 20%, transparent 20%), radial-gradient(#ffe4e1 20%, transparent 20%);
+    background-size: 24px 24px;
+    background-position: 0 0, 12px 12px;
+    color: var(--text-dark);
+    padding: 30px 15px;
+    display: flex;
+    justify-content: center;
+}
+
+.main-container {
+    width: 100%;
+    max-width: 1100px;
+    background: #ffffff;
+    border: 4px solid var(--card-border);
+    border-radius: 32px;
+    box-shadow: 0 12px 0px var(--card-border);
+    padding: 30px;
+}
+
+header h1 {
+    font-size: 2.2rem;
+    color: var(--primary);
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+header h1 span { display: inline-block; animation: wiggle 2s infinite ease-in-out; }
+.subtitle { text-align: center; color: var(--text-muted); margin-bottom: 25px; }
+
+/* SYSTEM ZAKŁADEK */
+.tab-navigation {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.tab-btn {
+    padding: 12px 24px;
+    border: 3px solid var(--card-border);
+    background: white;
+    border-radius: 16px;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.tab-btn:hover { background: #fff5f7; transform: translateY(-2px); }
+.tab-btn.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+    box-shadow: 0 4px 0 #d65893;
+}
+
+.tab-content { display: none; }
+.tab-content.active-view { display: block; }
+
+/* KONTROLA KWOTY */
+.simulator-section {
+    background-color: #fffbfd;
+    border: 3px dashed var(--card-border);
+    border-radius: 24px;
+    padding: 20px;
+    margin-bottom: 25px;
+}
+
+.simulator-section h3 { color: var(--primary); margin-bottom: 15px; }
+
+.amount-control {
+    background: #ffffff;
+    border: 3px solid var(--card-border);
+    border-radius: 18px;
+    padding: 15px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.amount-text { font-weight: 600; font-size: 1rem; }
+.slider-wrapper { display: flex; align-items: center; gap: 15px; }
+input[type="range"] { -webkit-appearance: none; appearance: none; width: 100%; height: 12px; border-radius: 10px; background: #ffe4e1; outline: none; }
+input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 24px; height: 24px; border-radius: 50%; background: var(--primary); border: 3px solid white; cursor: pointer; }
+
+.amount-display { font-size: 1.5rem; color: var(--primary); font-weight: 700; background: #fff0f5; padding: 4px 12px; border-radius: 12px; border: 2px solid var(--primary); white-space: nowrap; }
+
+/* SCENARIUSZE GRID */
+.scenarios-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; }
+.scenario-card { background: white; border: 3px solid var(--card-border); border-radius: 14px; padding: 10px; display: flex; align-items: center; gap: 10px; cursor: pointer; transition: all 0.2s; }
+.scenario-card:hover { transform: translateY(-2px); border-color: var(--primary); }
+.scenario-card.active { background-color: #fff0f5; border-color: var(--primary); }
+.custom-checkbox { width: 20px; height: 20px; border: 2px solid var(--card-border); border-radius: 6px; display: flex; justify-content: center; align-items: center; background: white; }
+.scenario-card.active .custom-checkbox { background: var(--primary); border-color: var(--primary); }
+.scenario-card.active .custom-checkbox::after { content: "✓"; color: white; font-size: 12px; font-weight: bold; }
+.scenario-text { font-size: 0.88rem; font-weight: 600; }
+
+/* DASHBOARD */
+.summary-dashboard { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 25px; }
+.stat-box { background: white; border: 3px solid var(--card-border); border-radius: 16px; padding: 15px; text-align: center; }
+.stat-box.active-stats { border-color: var(--primary); }
+.stat-value { font-size: 1.8rem; font-weight: 700; color: var(--primary); }
+
+/* AKORDEONOWE KARTY PODATKÓW */
+.tax-columns-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media (max-width: 768px) { .tax-columns-grid { grid-template-columns: 1fr; } }
+
+.tax-column-title { font-size: 1.1rem; margin-bottom: 12px; padding: 6px 12px; border-radius: 10px; color: white; display: inline-flex; gap: 8px; }
+.direct-title { background-color: var(--secondary); }
+.indirect-title { background-color: var(--primary); }
+
+.tax-list { display: flex; flex-direction: column; gap: 8px; }
+
+.tax-card {
+    background: white;
+    border: 2px solid #eef0f2;
+    border-radius: 14px;
+    padding: 10px 15px;
+    opacity: 0.4;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+/* Stan podświetlenia aktywnego podatku */
+.tax-card.active-tax {
+    opacity: 1;
+    border-width: 2.5px;
+}
+.tax-card.direct-card.active-tax { border-color: var(--secondary); background-color: #f4faff; box-shadow: 0 4px 0 var(--secondary); }
+.tax-card.indirect-card.active-tax { border-color: var(--primary); background-color: #fff9fc; box-shadow: 0 4px 0 var(--primary); }
+
+.tax-card-header { display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
+.tax-name { font-size: 0.9rem; font-weight: 700; }
+
+/* ROZWIJANIE KARTY (HOVER) */
+.tax-expand-content {
+    max-height: 0;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+/* Po najechaniu myszką karta się rozwija */
+.tax-card:hover .tax-expand-content {
+    max-height: 80px;
+    opacity: 1;
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px dashed #ffd1dc;
+}
+
+.tax-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.3; }
+
+/* DEKODER DESIGN */
+.decoder-input-group { display: flex; align-items: center; gap: 15px; margin-bottom: 25px; font-weight: 600; }
+.decoder-input-group input { padding: 8px 15px; font-size: 1.2rem; border: 3px solid var(--card-border); border-radius: 12px; width: 150px; text-align: center; color: var(--primary); outline: none; }
+
+.decoder-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media (max-width: 600px) { .decoder-grid { grid-template-columns: 1fr; } }
+.decoder-box { background: white; border: 3px solid var(--card-border); border-radius: 18px; padding: 20px; text-align: center; }
+.decoder-box h5 { font-size: 1rem; margin-bottom: 10px; display: flex; align-items: center; justify-content: center; gap: 8px; }
+.badge { font-size: 0.7rem; padding: 2px 8px; border-radius: 8px; color: white; text-transform: uppercase; }
+.decoder-desc { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 10px; }
+.decoder-result { font-size: 1.8rem; font-weight: 700; color: var(--primary); margin-bottom: 8px; }
+.decoder-math { font-size: 0.85rem; font-weight: 600; color: var(--text-dark); }
+
+/* FOOTER */
+footer { text-align: center; margin-top: 30px; padding-top: 15px; border-top: 3px dashed var(--card-border); color: var(--text-muted); font-size: 0.85rem; }
+.authors { margin-top: 5px; color: var(--text-dark); font-size: 0.9rem; background: #fff0f5; padding: 8px; border-radius: 12px; display: inline-block; border: 1px solid var(--card-border); }
+
+@keyframes wiggle { 0%, 100% { transform: rotate(0deg); } 25% { transform: rotate(-5deg); } 75% { transform: rotate(5deg); } }
